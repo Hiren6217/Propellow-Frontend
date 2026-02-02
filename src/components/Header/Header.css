@@ -1,0 +1,72 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 80px;
+  background: var(--white);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.logo-icon {
+  color: var(--primary);
+}
+
+nav {
+  display: flex;
+  gap: 32px;
+}
+
+nav a {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+nav a:hover {
+  color: var(--primary);
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+}
+
+.upgrade-btn {
+  border: 1.5px solid var(--primary);
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.login-btn {
+  background: var(--primary);
+  color: var(--white);
+  padding: 10px 28px;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.login-btn:hover {
+  background: #e65f00;
+}
+
+@media (max-width: 900px) {
+  .header {
+    padding: 20px 40px;
+  }
+  nav {
+    display: none;
+  }
+}

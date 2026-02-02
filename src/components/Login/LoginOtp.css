@@ -1,0 +1,53 @@
+/* REUSE LOGIN STYLES */
+@import "./Login.css";
+
+.login-input.readonly {
+  background: #fdfdfd;
+  color: #999;
+  cursor: default;
+}
+
+.otp-inputs {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.otp-field {
+  width: 56px;
+  height: 64px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-dark);
+  outline: none;
+  transition: 0.3s;
+  background: #fff;
+}
+
+.otp-field:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(255, 106, 0, 0.05);
+}
+
+.otp-timer {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .otp-field {
+    width: 44px;
+    height: 54px;
+    font-size: 20px;
+  }
+  .otp-inputs {
+    gap: 8px;
+  }
+}
