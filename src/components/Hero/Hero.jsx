@@ -23,7 +23,7 @@ export default function Hero() {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <h1>
-              Live where you <br /> belong<span>.</span>
+              Live where you <br /> belong<span style={{ color: "var(--primary)" }}>.</span>
             </h1>
 
             <p>
@@ -37,7 +37,17 @@ export default function Hero() {
               <motion.li initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.5 }}><span className="check">✓</span> No Fake Ads</motion.li>
             </ul>
 
-            <button className="hero-btn">Let’s Get Started</button>
+            <motion.button 
+              className="hero-btn-outline"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.6 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Let's Get Started
+            </motion.button>
           </motion.div>
 
           <motion.div 

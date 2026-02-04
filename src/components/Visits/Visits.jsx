@@ -48,13 +48,20 @@ export default function Visits() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ scale: 1.05, boxShadow: "0 15px 30px rgba(0,0,0,0.1)" }}
             >
               <div className="img-box">
                 <img src={item.image} alt={item.title} />
               </div>
               <h4>{item.title}</h4>
               <p>{item.desc}</p>
-              <button className="visit-btn">{item.btn}</button>
+              <motion.button 
+                className="visit-btn"
+                whileHover={{ scale: 1.1, backgroundColor: "var(--primary)", color: "var(--white)" }}
+                whileTap={{ scale: 0.9 }}
+              >
+                {item.btn}
+              </motion.button>
             </motion.div>
           ))}
         </div>

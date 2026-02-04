@@ -60,6 +60,11 @@ export default function Services() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: (index % 3) * 0.1 }}
+              whileHover={{ 
+                scale: 1.03,
+                backgroundColor: "#fff9f5",
+                borderColor: "var(--primary)"
+              }}
             >
               <div className="service-img">
                 <img src={item.image} alt={item.title} />

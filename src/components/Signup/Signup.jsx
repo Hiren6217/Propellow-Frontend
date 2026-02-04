@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { User, Mail, Phone, Lock } from "lucide-react";
+import { User, Mail, Phone, CheckCircle } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -14,7 +14,6 @@ export default function Signup() {
     fullName: "",
     email: "",
     mobile: "",
-    password: "",
     role: "BUYER",
   });
   const [loading, setLoading] = useState(false);
@@ -29,15 +28,20 @@ export default function Signup() {
     setFormData({ ...formData, role });
   };
 
-  const handleSignup = async (e) => {
+  const handleSendOtp = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
     try {
-      await authService.register(formData);
-      router.push("/"); // Redirect to home on success
+      const res = await authService.sendOtp(formData.mobile);
+      localStorage.setItem("pending_signup", JSON.stringify({
+        ...formData,
+        demoOtp: res.otp
+      }));
+      router.push("/signup-otp");
     } catch (err) {
-      setError(err.message || "Registration failed. Please check your details.");
+      console.error("Signup Send OTP Error:", err);
+      setError(err.message || "An unexpected error occurred. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -74,95 +78,90 @@ export default function Signup() {
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
         >
           <div className="login-form-box">
-            <div className="login-header">
-              <h1 className="signup-title">Sign Up</h1>
-              <p>Buy, rent, list or manage properties - all in one place.</p>
-            </div>
+            <motion.div
+              key="signup-form"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+            >
+              <div className="login-header">
+                <h1 className="signup-title">Sign Up</h1>
+                <p>Buy, rent, list or manage properties - all in one place.</p>
+              </div>
 
-            {error && <p className="error-message" style={{ color: 'red', marginBottom: '10px' }}>{error}</p>}
+              {error && <p className="error-message" style={{ color: 'red', marginBottom: '10px' }}>{error}</p>}
 
-            <div className="role-selection">
-              <p className="role-label">I am a :</p>
-              <div className="roles">
-                {["BUYER", "AGENT", "BUILDER", "OWNER"].map((role) => (
-                  <label className="role-item" key={role}>
-                    <input 
-                      type="radio" 
-                      name="role" 
-                      checked={formData.role === role}
-                      onChange={() => handleRoleChange(role)}
-                    />
-                    <span className="radio-custom"></span>
-                    {role.charAt(0) + role.slice(1).toLowerCase()}
+              <div className="role-selection">
+                <p className="role-label">I am a :</p>
+                <div className="roles">
+                  {["BUYER", "AGENT", "BUILDER", "OWNER"].map((role) => (
+                    <label className="role-item" key={role}>
+                      <input 
+                        type="radio" 
+                        name="role" 
+                        checked={formData.role === role}
+                        onChange={() => handleRoleChange(role)}
+                      />
+                      <span className="radio-custom"></span>
+                      {role.charAt(0) + role.slice(1).toLowerCase()}
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              <form className="signup-form" onSubmit={handleSendOtp}>
+                <div className="input-group">
+                  <User size={20} className="input-icon" />
+                  <input 
+                    type="text" 
+                    name="fullName"
+                    placeholder="Full Name" 
+                    value={formData.fullName}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+                <div className="input-group">
+                  <Mail size={20} className="input-icon" />
+                  <input 
+                    type="email" 
+                    name="email"
+                    placeholder="Email Address" 
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+                <div className="input-group">
+                  <Phone size={20} className="input-icon" />
+                  <input 
+                    type="text" 
+                    name="mobile"
+                    placeholder="Mobile No." 
+                    value={formData.mobile}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+
+                <div className="terms-checkbox">
+                  <label>
+                    <input type="checkbox" required />
+                    <span className="checkbox-custom"></span>
+                    I accept the <a href="#">Terms & Privacy Policy</a>
                   </label>
-                ))}
-              </div>
-            </div>
+                </div>
 
-            <form className="signup-form" onSubmit={handleSignup}>
-              <div className="input-group">
-                <User size={20} className="input-icon" />
-                <input 
-                  type="text" 
-                  name="fullName"
-                  placeholder="Full Name" 
-                  value={formData.fullName}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              <div className="input-group">
-                <Mail size={20} className="input-icon" />
-                <input 
-                  type="email" 
-                  name="email"
-                  placeholder="Email Address" 
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              <div className="input-group">
-                <Phone size={20} className="input-icon" />
-                <input 
-                  type="text" 
-                  name="mobile"
-                  placeholder="Mobile No." 
-                  value={formData.mobile}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              <div className="input-group">
-                <Lock size={20} className="input-icon" />
-                <input 
-                  type="password" 
-                  name="password"
-                  placeholder="Password" 
-                  value={formData.password}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-
-              <div className="terms-checkbox">
-                <label>
-                  <input type="checkbox" required />
-                  <span className="checkbox-custom"></span>
-                  I accept the <a href="#">Terms & Privacy Policy</a>
-                </label>
-              </div>
-
-              <motion.button 
-                className="send-otp-btn"
-                type="submit"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                disabled={loading}
-              >
-                {loading ? "Signing up..." : "Sign Up"}
-              </motion.button>
-            </form>
+                <motion.button 
+                  className="send-otp-btn"
+                  type="submit"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  disabled={loading}
+                >
+                  {loading ? "Sending..." : "Send OTP"}
+                </motion.button>
+              </form>
+            </motion.div>
 
             <p className="signup-text">
               Already have an account? <Link href="/login">Login</Link>

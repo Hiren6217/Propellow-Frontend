@@ -64,6 +64,11 @@ export default function WhyUs() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
+              whileHover={{ 
+                y: -10,
+                backgroundColor: "#fff",
+                boxShadow: "0 15px 30px rgba(0,0,0,0.08)"
+              }}
             >
               <div className="icon-box">{item.icon}</div>
               <p>{item.title}</p>

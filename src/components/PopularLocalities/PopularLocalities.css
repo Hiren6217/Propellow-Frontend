@@ -1,5 +1,5 @@
 .localities {
-  padding: 40px 0;
+  padding: 40px 120px;
   background: var(--white);
 }
 
@@ -13,9 +13,13 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-weight: 600;
   color: var(--text-dark);
   white-space: nowrap;
+}
+
+.label span {
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .pin-icon {
@@ -33,12 +37,13 @@
   align-items: center;
   gap: 8px;
   padding: 8px 16px;
-  border: 1px solid #ff6a0033;
-  border-radius: 20px;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
   font-size: 14px;
-  font-weight: 500;
-  color: var(--primary);
+  font-weight: 600;
+  color: #ff6a00;
   background: var(--white);
+  transition: 0.3s;
 }
 
 .locality-pill .arrow {
@@ -46,7 +51,8 @@
 }
 
 .locality-pill:hover {
-  background: var(--primary-light);
+  background: #fff9f5;
+  border-color: #ff6a00;
 }
 
 @media (max-width: 900px) {

@@ -1,0 +1,382 @@
+/*!******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[3]!./src/components/Footer/Footer.css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************/
+.footer {
+  background: #0a0a0a;
+  color: var(--white);
+  padding: 80px 0;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+.footer-main {
+  flex: 1.5 1;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.footer-logo .logo-icon {
+  color: var(--primary);
+}
+
+.footer-desc {
+  font-size: 14px;
+  color: #bbb;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  max-width: 320px;
+}
+
+.social-links {
+  display: flex;
+  gap: 16px;
+}
+
+.social-links a {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  transition: 0.3s;
+}
+
+.social-links a:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.footer-links {
+  flex: 2.5 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 30px;
+  gap: 30px;
+}
+
+.link-col h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.link-col ul {
+  list-style: none;
+}
+
+.link-col ul li {
+  margin-bottom: 12px;
+}
+
+.link-col ul li a {
+  font-size: 14px;
+  color: #999;
+}
+
+.link-col ul li a:hover {
+  color: var(--white);
+}
+
+@media (max-width: 900px) {
+  .footer-container {
+    flex-direction: column;
+  }
+  .footer-links {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/*!******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[3]!./src/components/Header/Header.css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************/
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 80px;
+  background: var(--white);
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.logo-icon {
+  color: var(--primary);
+}
+
+nav {
+  display: flex;
+  gap: 32px;
+}
+
+nav a {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+nav a:hover {
+  color: var(--primary);
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+}
+
+.upgrade-btn {
+  border: 1.5px solid var(--primary);
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.login-btn {
+  background: var(--primary);
+  color: var(--white);
+  padding: 10px 28px;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.login-btn:hover {
+  background: #e65f00;
+}
+
+@media (max-width: 900px) {
+  .header {
+    padding: 20px 40px;
+  }
+  nav {
+    display: none;
+  }
+}
+
+/*!****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[3]!./src/components/Login/Login.css ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************/
+.login-section {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background: #fdf8f5;
+  padding: 40px 0;
+}
+
+.login-bg-blobs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.blob {
+  position: absolute;
+  background: #feece2;
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
+.blob-1 {
+  width: 120px;
+  height: 120px;
+  top: 10%;
+  right: 15%;
+}
+
+.blob-2 {
+  width: 300px;
+  height: 300px;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.blob-3 {
+  width: 150px;
+  height: 150px;
+  top: 35%;
+  left: -75px;
+}
+
+.blob-4 {
+  width: 100px;
+  height: 100px;
+  bottom: 20%;
+  right: -50px;
+}
+
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+  position: relative;
+  z-index: 2;
+}
+
+.login-left {
+  flex: 1 1;
+  max-width: 500px;
+}
+
+.login-image-wrapper {
+  position: relative;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+}
+
+.login-image-wrapper img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  display: block;
+}
+
+.image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 40px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+}
+
+.image-overlay h2 {
+  color: var(--white);
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.login-right {
+  flex: 1 1;
+  display: flex;
+  justify-content: center;
+}
+
+.login-form-box {
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+}
+
+.login-header h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 12px;
+  display: inline-block;
+  position: relative;
+}
+
+.login-header h1::after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: var(--primary-light);
+  border-radius: 50%;
+  top: -5px;
+  right: -25px;
+  z-index: -1;
+}
+
+.login-header p {
+  color: var(--text-gray);
+  font-size: 16px;
+  margin-bottom: 40px;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.login-input {
+  width: 100%;
+  padding: 16px 24px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  font-size: 16px;
+  font-family: inherit;
+  outline: none;
+  transition: 0.3s;
+  background: #fdfdfd;
+}
+
+.login-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(255, 106, 0, 0.05);
+}
+
+.send-otp-btn {
+  width: 100%;
+  background: var(--primary);
+  color: var(--white);
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  box-shadow: 0 10px 20px rgba(255, 106, 0, 0.2);
+}
+
+.signup-text {
+  font-size: 16px;
+  color: var(--text-gray);
+}
+
+.signup-text a {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+@media (max-width: 1024px) {
+  .login-container {
+    gap: 40px;
+  }
+  .image-overlay h2 {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 900px) {
+  .login-left {
+    display: none;
+  }
+  .login-section {
+    min-height: 80vh;
+  }
+}
+

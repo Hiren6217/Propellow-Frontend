@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import "./Footer.css";
 import {
   Facebook,
@@ -13,21 +16,35 @@ export default function Footer() {
     <footer className="footer">
       <div className="container footer-container">
         <div className="footer-main">
-          <div className="footer-logo">
+          <motion.div 
+            className="footer-logo"
+            whileHover={{ scale: 1.05 }}
+          >
             <Home className="logo-icon" size={32} />
             <span>Propellow</span>
-          </div>
+          </motion.div>
           <p className="footer-desc">
             Find trusted properties, verified listings, and the right home for
             every lifestyle. Explore, compare, and make confident property
             decisions with ease.
           </p>
           <div className="social-links">
-            <a href="#"><Facebook size={20} /></a>
-            <a href="#"><Instagram size={20} /></a>
-            <a href="#"><Twitter size={20} /></a>
-            <a href="#"><Youtube size={20} /></a>
-            <a href="#"><Linkedin size={20} /></a>
+            {[
+              { icon: <Facebook size={20} />, href: "#" },
+              { icon: <Instagram size={20} />, href: "#" },
+              { icon: <Twitter size={20} />, href: "#" },
+              { icon: <Youtube size={20} />, href: "#" },
+              { icon: <Linkedin size={20} />, href: "#" }
+            ].map((social, idx) => (
+              <motion.a
+                key={idx}
+                href={social.href}
+                whileHover={{ scale: 1.2, backgroundColor: "var(--primary)", borderColor: "var(--primary)" }}
+                whileTap={{ scale: 0.9 }}
+              >
+                {social.icon}
+              </motion.a>
+            ))}
           </div>
         </div>
 
@@ -36,10 +53,16 @@ export default function Footer() {
             <div className="link-col" key={i}>
               <h4>Header Text</h4>
               <ul>
-                <li><a href="#">Button</a></li>
-                <li><a href="#">Button</a></li>
-                <li><a href="#">Button</a></li>
-                <li><a href="#">Button</a></li>
+                {[1, 2, 3, 4].map((item) => (
+                  <li key={item}>
+                    <motion.a 
+                      href="#" 
+                      whileHover={{ x: 5, color: "var(--white)" }}
+                    >
+                      Button
+                    </motion.a>
+                  </li>
+                ))}
               </ul>
             </div>
           ))}

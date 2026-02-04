@@ -57,6 +57,10 @@ export default function Properties() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ 
+                y: -10,
+                boxShadow: "0 20px 40px rgba(0,0,0,0.12)"
+              }}
             >
               <div className="image-box">
                 <img src={item.image} alt={item.title} />
