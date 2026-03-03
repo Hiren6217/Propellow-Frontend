@@ -21,12 +21,12 @@ export default function Footer() {
             whileHover={{ scale: 1.05 }}
           >
             <Home className="logo-icon" size={32} />
-            <span>Propellow</span>
+            <span>Dwello</span>
           </motion.div>
           <p className="footer-desc">
-            Find trusted properties, verified listings, and the right home for
-            every lifestyle. Explore, compare, and make confident property
-            decisions with ease.
+            Find your ideal home with Dwello. Trusted properties, verified listings, 
+            and the right home for every lifestyle. Explore, compare, and make 
+            confident property decisions with ease.
           </p>
           <div className="social-links">
             {[
@@ -39,7 +39,7 @@ export default function Footer() {
               <motion.a
                 key={idx}
                 href={social.href}
-                whileHover={{ scale: 1.2, backgroundColor: "var(--primary)", borderColor: "var(--primary)" }}
+                whileHover={{ scale: 1.2, backgroundColor: "#E65F00", borderColor: "#E65F00" }}
                 whileTap={{ scale: 0.9 }}
               >
                 {social.icon}
@@ -49,23 +49,157 @@ export default function Footer() {
         </div>
 
         <div className="footer-links">
-          {[1, 2, 3, 4].map((i) => (
-            <div className="link-col" key={i}>
-              <h4>Header Text</h4>
-              <ul>
-                {[1, 2, 3, 4].map((item) => (
-                  <li key={item}>
-                    <motion.a 
-                      href="#" 
-                      whileHover={{ x: 5, color: "var(--white)" }}
-                    >
-                      Button
-                    </motion.a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <div className="link-col">
+            <h4>Company</h4>
+            <ul>
+              <li>
+                <motion.a 
+                  href="#" 
+                  whileHover={{ x: 5, color: "#E65F00" }}
+                >
+                  About Us
+                </motion.a>
+              </li>
+              <li>
+                <motion.a 
+                  href="#" 
+                  whileHover={{ x: 5, color: "#E65F00" }}
+                >
+                  Careers
+                </motion.a>
+              </li>
+              <li>
+                <motion.a 
+                  href="#" 
+                  whileHover={{ x: 5, color: "#E65F00" }}
+                >
+                  Blog
+                </motion.a>
+              </li>
+              <li>
+                <motion.a 
+                  href="#" 
+                  whileHover={{ x: 5, color: "#E65F00" }}
+                >
+                  Press
+                </motion.a>
+              </li>
+            </ul>
+          </div>
+          
+          <div className="link-col">
+            <h4>Services</h4>
+            <ul>
+              <li>
+                <motion.a 
+                  href="#" 
+                  whileHover={{ x: 5, color: "#E65F00" }}
+                >
+                  Property Search
+                </motion.a>
+              </li>
+              <li>
+                <motion.a 
+                  href="#" 
+                  whileHover={{ x: 5, color: "#E65F00" }}
+                >
+                  Home Loans
+                </motion.a>
+              </li>
+              <li>
+                <motion.a 
+                  href="#" 
+                  whileHover={{ x: 5, color: "#E65F00" }}
+                >
+                  Interior Design
+                </motion.a>
+              </li>
+              <li>
+                <motion.a 
+                  href="#" 
+                  whileHover={{ x: 5, color: "#E65F00" }}
+                >
+                  Legal Services
+                </motion.a>
+              </li>
+            </ul>
+          </div>
+          
+          <div className="link-col">
+            <h4>Support</h4>
+            <ul>
+              <li>
+                <motion.a 
+                  href="#" 
+                  whileHover={{ x: 5, color: "#E65F00" }}
+                >
+                  Help Center
+                </motion.a>
+              </li>
+              <li>
+                <motion.a 
+                  href="#" 
+                  whileHover={{ x: 5, color: "#E65F00" }}
+                >
+                  Contact Us
+                </motion.a>
+              </li>
+              <li>
+                <motion.a 
+                  href="#" 
+                  whileHover={{ x: 5, color: "#E65F00" }}
+                >
+                  Privacy Policy
+                </motion.a>
+              </li>
+              <li>
+                <motion.a 
+                  href="#" 
+                  whileHover={{ x: 5, color: "#E65F00" }}
+                >
+                  Terms of Service
+                </motion.a>
+              </li>
+            </ul>
+          </div>
+          
+          <div className="link-col">
+            <h4>Locations</h4>
+            <ul>
+              <li>
+                <motion.a 
+                  href="#" 
+                  whileHover={{ x: 5, color: "#E65F00" }}
+                >
+                  Ahmedabad
+                </motion.a>
+              </li>
+              <li>
+                <motion.a 
+                  href="#" 
+                  whileHover={{ x: 5, color: "#E65F00" }}
+                >
+                  Mumbai
+                </motion.a>
+              </li>
+              <li>
+                <motion.a 
+                  href="#" 
+                  whileHover={{ x: 5, color: "#E65F00" }}
+                >
+                  Delhi
+                </motion.a>
+              </li>
+              <li>
+                <motion.a 
+                  href="#" 
+                  whileHover={{ x: 5, color: "#E65F00" }}
+                >
+                  Bangalore
+                </motion.a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </footer>

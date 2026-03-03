@@ -1,11 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 :root {
-  --primary: #ff6a00;
+  --primary: #e65f00;
+  --secondary: #ff8c42;
+  --accent: #ff6b35;
+  --white: #ffffff;
+  --black: #000000;
+  --gray-100: #f8f9fa;
+  --gray-200: #e9ecef;
+  --gray-300: #dee2e6;
+  --gray-400: #ced4da;
+  --gray-500: #adb5bd;
+  --gray-600: #6c757d;
+  --gray-700: #495057;
+  --gray-800: #343a40;
+  --gray-900: #212529;
   --primary-light: #fff3ea;
   --text-dark: #111;
   --text-gray: #555;
-  --white: #ffffff;
   --container-width: 1200px;
 }
 
@@ -42,6 +55,10 @@ button {
   transition: 0.3s;
 }
 
+input, select, textarea {
+  font-family: inherit;
+}
+
 .section-title {
   font-size: 32px;
   font-weight: 700;
@@ -56,4 +73,22 @@ button {
   background: var(--primary);
   margin-top: 10px;
   border-radius: 2px;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gray-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray-400);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-500);
 }

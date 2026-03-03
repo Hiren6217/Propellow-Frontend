@@ -5,15 +5,24 @@ import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import OtpView from "@/components/OtpView/OtpView";
 import { authService } from "@/services/authService";
+import { useAuth } from "@/context/AuthContext";
 import "@/components/Login/Login.css";
 
 export default function LoginOtp() {
   const router = useRouter();
+  const { login } = useAuth();
   const [mobile, setMobile] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
   useEffect(() => {
+    // Redirect to dashboard if already logged in
+    if (authService.isAuthenticated()) {
+      const dashboardRoute = authService.getDashboardRoute();
+      router.replace(dashboardRoute);
+      return;
+    }
+    
     const saved = localStorage.getItem("pending_login_mobile");
     const demoOtp = localStorage.getItem("pending_login_otp");
     if (!saved) {
@@ -29,10 +38,14 @@ export default function LoginOtp() {
   const handleVerify = async (otp) => {
     setError("");
     try {
-      await authService.verifyLogin(mobile, otp);
+      const res = await authService.verifyLogin(mobile, otp);
+      // Login successful - store user data and redirect to dashboard
+      await login(res);
       localStorage.removeItem("pending_login_mobile");
       localStorage.removeItem("pending_login_otp");
-      router.push("/");
+      // Redirect to dashboard based on user role after successful login
+      const dashboardRoute = authService.getDashboardRoute();
+      router.push(dashboardRoute);
     } catch (err) {
       setError(err.message || "Invalid OTP.");
     }

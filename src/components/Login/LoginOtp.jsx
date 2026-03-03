@@ -1,35 +1,66 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import OtpView from "../OtpView/OtpView";
+import { authService } from "@/services/authService";
+import { useAuth } from "@/context/AuthContext";
 import "./LoginOtp.css";
 
 export default function LoginOtp() {
-  const [otp, setOtp] = useState(["", "", "", "", "", ""]);
-  const [timer, setTimer] = useState(52);
+  const router = useRouter();
+  const { login } = useAuth();
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTimer((prev) => (prev > 0 ? prev - 1 : 0));
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
+  const mobile = localStorage.getItem("pending_login_mobile") || "";
 
-  const handleChange = (element, index) => {
-    if (isNaN(element.value)) return false;
-
-    setOtp([...otp.map((d, idx) => (idx === index ? element.value : d))]);
-
-    // Focus next input
-    if (element.nextSibling && element.value !== "") {
-      element.nextSibling.focus();
+  const handleVerify = async (enteredOtp) => {
+    setLoading(true);
+    setError("");
+    setSuccess("");
+    
+    try {
+      console.log("Starting login verification process with entered OTP");
+      
+      // Verify the OTP that the user entered
+      const res = await authService.verifyLogin(mobile, enteredOtp);
+      console.log("Login verification successful:", res);
+      
+      // Login successful - store user data and redirect to dashboard
+      console.log("Calling login function");
+      await login(res);
+      console.log("Login function completed");
+      setSuccess("Login successful! Redirecting to dashboard...");
+      
+      // Small delay before redirect for better UX
+      console.log("Setting up redirect timeout");
+      setTimeout(() => {
+        console.log("Redirecting to dashboard");
+        // Use replace instead of push to prevent back navigation to login
+        // Redirect based on user role
+        const dashboardRoute = authService.getDashboardRoute();
+        router.replace(dashboardRoute);
+      }, 1500);
+      
+    } catch (err) {
+      console.error("Login Verification Error:", err);
+      setError(err.message || "Login failed. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
-  const formatTime = (time) => {
-    const minutes = Math.floor(time / 60);
-    const seconds = time % 60;
-    return `00 : ${seconds < 10 ? `0${seconds}` : seconds}`;
+  const handleResend = async () => {
+    setError("");
+    try {
+      const res = await authService.sendOtp(mobile);
+      setSuccess("OTP resent successfully!");
+    } catch (err) {
+      setError("Failed to resend OTP.");
+    }
   };
 
   return (
@@ -62,47 +93,16 @@ export default function LoginOtp() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
         >
-          <div className="login-form-box">
-            <div className="login-header">
-              <h1>Login</h1>
-              <p>Buy, rent, list or manage properties - all in one place.</p>
-            </div>
-
-            <div className="form-group">
-              <input 
-                type="text" 
-                value="9856321452" 
-                readOnly 
-                className="login-input readonly"
-              />
-            </div>
-
-            <div className="otp-inputs">
-              {otp.map((data, index) => (
-                <input
-                  key={index}
-                  type="text"
-                  maxLength="1"
-                  value={data}
-                  onChange={(e) => handleChange(e.target, index)}
-                  onFocus={(e) => e.target.select()}
-                  className="otp-field"
-                />
-              ))}
-            </div>
-
-            <div className="otp-timer">
-              {formatTime(timer)}
-            </div>
-
-            <motion.button 
-              className="send-otp-btn"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              Login
-            </motion.button>
-          </div>
+          <OtpView 
+            title="Login"
+            subtitle={`Enter the OTP sent to ${mobile}`}
+            mobile={mobile}
+            buttonText={loading ? "Verifying..." : "Verify & Login"}
+            onVerify={handleVerify}
+            onResend={handleResend}
+            error={error}
+            success={success}
+          />
         </motion.div>
       </div>
     </section>

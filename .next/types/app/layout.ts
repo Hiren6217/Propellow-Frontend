@@ -1,4 +1,4 @@
-// File: E:\propellow-frontend-full\src\app\layout.jsx
+// File: E:\Propellow full\propellow-frontend\src\app\layout.jsx
 import * as entry from '../../../src/app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

@@ -1,106 +1,4 @@
 /*!******************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[3]!./src/components/Footer/Footer.css ***!
-  \******************************************************************************************************************************************************************************************************************************************************************************/
-.footer {
-  background: #0a0a0a;
-  color: var(--white);
-  padding: 80px 0;
-}
-
-.footer-container {
-  display: flex;
-  justify-content: space-between;
-  gap: 60px;
-}
-
-.footer-main {
-  flex: 1.5 1;
-}
-
-.footer-logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 20px;
-}
-
-.footer-logo .logo-icon {
-  color: var(--primary);
-}
-
-.footer-desc {
-  font-size: 14px;
-  color: #bbb;
-  line-height: 1.6;
-  margin-bottom: 24px;
-  max-width: 320px;
-}
-
-.social-links {
-  display: flex;
-  gap: 16px;
-}
-
-.social-links a {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 1px solid #333;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--white);
-  transition: 0.3s;
-}
-
-.social-links a:hover {
-  background: var(--primary);
-  border-color: var(--primary);
-}
-
-.footer-links {
-  flex: 2.5 1;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 30px;
-  gap: 30px;
-}
-
-.link-col h4 {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 20px;
-}
-
-.link-col ul {
-  list-style: none;
-}
-
-.link-col ul li {
-  margin-bottom: 12px;
-}
-
-.link-col ul li a {
-  font-size: 14px;
-  color: #999;
-}
-
-.link-col ul li a:hover {
-  color: var(--white);
-}
-
-@media (max-width: 900px) {
-  .footer-container {
-    flex-direction: column;
-  }
-  .footer-links {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/*!******************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[3]!./src/components/Header/Header.css ***!
   \******************************************************************************************************************************************************************************************************************************************************************************/
 .header {
@@ -166,6 +64,134 @@ nav a:hover {
 
 .login-btn:hover {
   background: #e65f00;
+}
+
+/* User Profile Styles - Matching Owner Dashboard */
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+.notification-btn {
+  position: relative;
+  padding: 8px;
+  border-radius: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-dark);
+  transition: background 0.2s;
+}
+
+.notification-btn:hover {
+  background: #f5f5f5;
+}
+
+.notification-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 18px;
+  height: 18px;
+  background: #e74c3c;
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome-text {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.user-dropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.user-dropdown-trigger:hover {
+  background: #f5f5f5;
+}
+
+.user-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #f0f0f0;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.user-avatar:hover {
+  border-color: var(--primary);
+}
+
+.user-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.user-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  min-width: 180px;
+  padding: 8px;
+  z-index: 1000;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-dark);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.dropdown-item:hover {
+  background: #f5f5f5;
+  color: var(--primary);
+}
+
+.dropdown-item.logout {
+  color: #e74c3c;
+}
+
+.dropdown-item.logout:hover {
+  background: #fef2f2;
+  color: #c0392b;
 }
 
 @media (max-width: 900px) {
@@ -529,6 +555,128 @@ nav a:hover {
   }
   .role-item {
     font-size: 13px;
+  }
+}
+
+/*!******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[3]!./src/components/Footer/Footer.css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************/
+.footer {
+  background: #1a1a1a;
+  color: #fff;
+  padding: 60px 0 40px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-main {
+  flex: 1.2 1;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+.footer-logo .logo-icon {
+  color: #E65F00;
+  width: 28px;
+  height: 28px;
+}
+
+.footer-desc {
+  font-size: 0.85rem;
+  color: #999;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  max-width: 280px;
+}
+
+.social-links {
+  display: flex;
+  gap: 12px;
+}
+
+.social-links a {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  transition: all 0.2s ease;
+}
+
+.social-links a:hover {
+  background: #E65F00;
+  border-color: #E65F00;
+  color: #fff;
+}
+
+.footer-links {
+  flex: 2 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 24px;
+  gap: 24px;
+}
+
+.link-col h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+.link-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.link-col ul li {
+  margin-bottom: 10px;
+}
+
+.link-col ul li a {
+  font-size: 0.85rem;
+  color: #888;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.link-col ul li a:hover {
+  color: #E65F00;
+}
+
+@media (max-width: 900px) {
+  .footer-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .footer-links {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-links {
+    grid-template-columns: 1fr;
   }
 }
 

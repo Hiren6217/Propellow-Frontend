@@ -102,4 +102,60 @@ export const authService = {
   getToken: () => {
     return localStorage.getItem("token");
   },
+
+  setToken: (token) => {
+    localStorage.setItem("token", token);
+  },
+
+  isAuthenticated: () => {
+    const token = authService.getToken();
+    if (!token) return false;
+    
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      return payload.exp > Date.now() / 1000;
+    } catch {
+      return false;
+    }
+  },
+
+  getUserName: () => {
+    const token = authService.getToken();
+    if (!token) return null;
+
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      return payload.fullName || payload.sub || "User";
+    } catch {
+      return "User";
+    }
+  },
+
+  getUserRole: () => {
+    const token = authService.getToken();
+    if (!token) return null;
+
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      return payload.role || null;
+    } catch {
+      return null;
+    }
+  },
+
+  getDashboardRoute: () => {
+    const role = authService.getUserRole();
+    switch (role) {
+      case "OWNER":
+        return "/dashboard";
+      case "BUYER":
+        return "/dashboard";
+      case "AGENT":
+        return "/dashboard";
+      case "BUILDER":
+        return "/dashboard";
+      default:
+        return "/dashboard";
+    }
+  }
 };

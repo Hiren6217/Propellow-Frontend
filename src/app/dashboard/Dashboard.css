@@ -1,0 +1,40 @@
+.dashboard-page {
+  background: var(--white);
+  min-height: 100vh;
+}
+
+.buyer-dashboard {
+  background: var(--white);
+  min-height: 100vh;
+  padding-top: 0;
+}
+
+.dashboard-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px 32px;
+}
+
+.dashboard-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+}
+
+/* Buyer dashboard sections spacing */
+.buyer-dashboard > section {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .dashboard-content {
+    padding: 16px;
+  }
+  
+  .buyer-dashboard {
+    padding-top: 0;
+  }
+}

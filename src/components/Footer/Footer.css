@@ -1,97 +1,117 @@
 .footer {
-  background: #0a0a0a;
-  color: var(--white);
-  padding: 80px 0;
+  background: #1a1a1a;
+  color: #fff;
+  padding: 60px 0 40px;
 }
 
 .footer-container {
   display: flex;
   justify-content: space-between;
-  gap: 60px;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .footer-main {
-  flex: 1.5;
+  flex: 1.2;
 }
 
 .footer-logo {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
+  color: #fff;
 }
 
 .footer-logo .logo-icon {
-  color: var(--primary);
+  color: #E65F00;
+  width: 28px;
+  height: 28px;
 }
 
 .footer-desc {
-  font-size: 14px;
-  color: #bbb;
+  font-size: 0.85rem;
+  color: #999;
   line-height: 1.6;
-  margin-bottom: 24px;
-  max-width: 320px;
+  margin-bottom: 20px;
+  max-width: 280px;
 }
 
 .social-links {
   display: flex;
-  gap: 16px;
+  gap: 12px;
 }
 
 .social-links a {
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  border: 1px solid #333;
+  border: 1px solid #444;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--white);
-  transition: 0.3s;
+  color: #999;
+  transition: all 0.2s ease;
 }
 
 .social-links a:hover {
-  background: var(--primary);
-  border-color: var(--primary);
+  background: #E65F00;
+  border-color: #E65F00;
+  color: #fff;
 }
 
 .footer-links {
-  flex: 2.5;
+  flex: 2;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
+  gap: 24px;
 }
 
 .link-col h4 {
-  font-size: 16px;
+  font-size: 0.9rem;
   font-weight: 600;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
+  color: #fff;
 }
 
 .link-col ul {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .link-col ul li {
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .link-col ul li a {
-  font-size: 14px;
-  color: #999;
+  font-size: 0.85rem;
+  color: #888;
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 .link-col ul li a:hover {
-  color: var(--white);
+  color: #E65F00;
 }
 
 @media (max-width: 900px) {
   .footer-container {
     flex-direction: column;
+    gap: 30px;
   }
   .footer-links {
     grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-links {
+    grid-template-columns: 1fr;
   }
 }

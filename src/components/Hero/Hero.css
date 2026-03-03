@@ -104,17 +104,17 @@
 }
 
 .image-card {
-  background: var(--white);
-  padding: 20px;
-  border-radius: 40px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
-  max-width: 580px;
-  border: 1px solid #f0f0f0;
+  width: 100%;
+  max-width: 520px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
 }
 
 .image-card img {
   width: 100%;
-  border-radius: 20px;
+  height: 100%;
+  object-fit: cover;
   display: block;
 }
 

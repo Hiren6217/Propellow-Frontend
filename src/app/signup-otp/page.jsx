@@ -17,7 +17,14 @@ export default function SignupOtp() {
   useEffect(() => {
     const saved = localStorage.getItem("pending_signup");
     if (!saved) {
-      router.push("/signup");
+      // If no pending signup and already logged in, go to dashboard
+      // Otherwise go to signup
+      if (authService.isAuthenticated()) {
+        const dashboardRoute = authService.getDashboardRoute();
+        router.replace(dashboardRoute);
+      } else {
+        router.push("/signup");
+      }
       return;
     }
     const data = JSON.parse(saved);
@@ -30,14 +37,26 @@ export default function SignupOtp() {
   const handleVerify = async (otp) => {
     setError("");
     try {
-      await authService.verifyRegister({
+      const res = await authService.verifyRegister({
         ...userData,
         otp
       });
       localStorage.removeItem("pending_signup");
-      router.push("/");
+      // Remove token if returned - force user to login after signup
+      if (res.token) {
+        localStorage.removeItem("token");
+      }
+      // Redirect to login after successful registration
+      router.push("/login");
     } catch (err) {
-      setError(err.message || "Invalid OTP.");
+      const errorMsg = err.message || "Registration failed. Please try again.";
+      if (errorMsg.includes("Email already exists")) {
+        setError("This email is already registered. Please use a different email or login.");
+      } else if (errorMsg.includes("Mobile already exists")) {
+        setError("This mobile number is already registered. Please login instead.");
+      } else {
+        setError(errorMsg);
+      }
     }
   };
 

@@ -1,7 +1,1 @@
-{
-  "/signup-otp/page": "app/signup-otp/page.js",
-  "/login/page": "app/login/page.js",
-  "/login-otp/page": "app/login-otp/page.js",
-  "/page": "app/page.js",
-  "/signup/page": "app/signup/page.js"
-}
+{}
