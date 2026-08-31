@@ -96,15 +96,22 @@ export const authService = {
   },
 
   logout: () => {
-    localStorage.removeItem("token");
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("token");
+    }
   },
 
   getToken: () => {
-    return localStorage.getItem("token");
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("token");
+    }
+    return null;
   },
 
   setToken: (token) => {
-    localStorage.setItem("token", token);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("token", token);
+    }
   },
 
   isAuthenticated: () => {

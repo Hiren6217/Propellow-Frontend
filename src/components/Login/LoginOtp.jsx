@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import OtpView from "../OtpView/OtpView";
 import { authService } from "@/services/authService";
 import { useAuth } from "@/context/AuthContext";
@@ -15,7 +15,14 @@ export default function LoginOtp() {
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const mobile = localStorage.getItem("pending_login_mobile") || "";
+  const [mobile, setMobile] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedMobile = localStorage.getItem("pending_login_mobile") || "";
+      setMobile(savedMobile);
+    }
+  }, []);
 
   const handleVerify = async (enteredOtp) => {
     setLoading(true);
